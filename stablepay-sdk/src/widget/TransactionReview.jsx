@@ -248,10 +248,6 @@ const TransactionReview = ({ onTransactionComplete }) => {
         throw new Error(`Network mismatch. MetaMask is on chain ${currentChainId}, but ${selectedNetwork} requires chain ${networkConfig.chainId}. Please switch networks in MetaMask.`);
       }
 
-      if (freshWalletClient.chain.id !== networkConfig.chainId) {
-        throw new Error(`Wallet client chain mismatch. Wallet client is on chain ${freshWalletClient.chain.id}, but expected ${networkConfig.chainId}.`);
-      }
-
       const txHash = await freshWalletClient.sendTransaction({
         ...builtTx,
         account: account,
